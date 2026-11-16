@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Master Game</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Supabase library for online login and score storage -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <main class="container">
+    <section id="loginScreen" class="card">
+      <h1>🎯 Number Master</h1>
+      <p class="subtitle">Create an account or log in to play</p>
+
+      <label for="playerName">Player name</label>
+      <input id="playerName" type="text" placeholder="Enter your name">
+
+      <label for="email">Email</label>
+      <input id="email" type="email" placeholder="Enter your email">
+
+      <label for="password">Password</label>
+      <input id="password" type="password" placeholder="At least 6 characters">
+
+      <div class="button-row">
+        <button id="registerBtn">Create account</button>
+        <button id="loginBtn" class="secondary">Log in</button>
+      </div>
+      <p id="loginMessage" class="message"></p>
+      <p class="small-note">First time? Enter your name, email and password, then choose Create account.</p>
+    </section>
+
+    <section id="gameScreen" class="card hidden">
+      <div class="top-row">
+        <div>
+          <h1>🎯 Number Master</h1>
+          <p id="welcomeText" class="subtitle"></p>
+        </div>
+        <button id="logoutBtn" class="secondary small-button">Log out</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><span>Level</span><strong id="level">1</strong></div>
+        <div class="stat"><span>Range</span><strong id="range">1 - 50</strong></div>
+        <div class="stat"><span>Score</span><strong id="score">0</strong></div>
+        <div class="stat"><span>Best</span><strong id="bestScore">0</strong></div>
+      </div>
+
+      <div class="progress-area">
+        <div class="progress-label"><span>Attempts left</span><span id="attemptText">10 / 10</span></div>
+        <div class="progress-track"><div id="progressBar"></div></div>
+      </div>
+
+      <h2>Guess the secret number</h2>
+      <p class="hint">Hint: The secret number is <strong id="evenOdd">...</strong>.</p>
+      <div class="guess-row">
+        <input id="guessInput" type="number" min="1" max="50" placeholder="Enter a number">
+        <button id="guessBtn">Guess</button>
+      </div>
+      <p id="gameMessage" class="message" aria-live="polite">You have 10 attempts. Good luck!</p>
+
+      <div class="button-row">
+        <button id="nextBtn" class="hidden">Next level</button>
+        <button id="restartBtn" class="secondary">Restart level</button>
+        <button id="musicBtn" class="secondary">Music: OFF</button>
+      </div>
+      <p class="small-note">Each new level increases the maximum number by 50.</p>
+    </section>
+  </main>
+  <script src="supabase-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
